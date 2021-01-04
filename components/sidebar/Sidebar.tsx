@@ -5,13 +5,13 @@ import SidebarSection from './SidebarSection';
 
 export default function Sidebar(): React.ReactElement {
     const pages = [
-        { href: '/ssr', title: 'Server-side Rendered Page' },
-        { href: '/csr', title: 'Client-side Rendered Page' },
-        { href: '/external', title: 'External API Call (frontend)' }
+        { href: '/ssr', title: 'Server-side rendered page' },
+        { href: '/csr', title: 'Client-side rendered page' },
+        { href: '/external', title: 'External API call (frontend)' }
     ];
     const routes = [
-        { href: '/route/protected', title: 'Protected API Route' },
-        { href: '/route/external', title: 'External API Call (backend)' }
+        { href: '/route/protected', title: 'Protected API route' },
+        { href: '/route/external', title: 'External API call (backend)' }
     ];
     const sections = [
         { name: 'pages', items: pages },
