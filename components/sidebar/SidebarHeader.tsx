@@ -7,7 +7,7 @@ export default function SidebarHeader(): React.ReactElement {
 
     const dividerClasses = 'border-l border-background-lighter';
     const classes =
-        'flex justify-center items-center w-full h-10 cursor-pointer font-medium text-foreground-darkest hover:text-foreground';
+        'flex justify-center items-center w-1/2 h-10 cursor-pointer font-medium text-foreground-darkest hover:text-foreground';
 
     return (
         <header className="flex border-b-2 border-background-lighter text-sm">
@@ -15,7 +15,7 @@ export default function SidebarHeader(): React.ReactElement {
                 <p className={classes}>Home</p>
             </Link>
             {loading ? (
-                <p className={classes} />
+                <p className={`${classes} ${dividerClasses}`} />
             ) : (
                 <Link href={`/api/auth/${user ? 'logout' : 'login'}`}>
                     <p className={`${classes} ${dividerClasses}`}>{user ? 'Logout' : 'Login'}</p>
