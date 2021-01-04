@@ -8,9 +8,7 @@ export default function ConsoleHeader({ title }: ConsoleHeaderProps): React.Reac
 
     return (
         <header className="relative">
-            <div className={classes}>
-                <h3>{title}</h3>
-            </div>
+            <h3 className={classes}>{title}</h3>
         </header>
     );
 }

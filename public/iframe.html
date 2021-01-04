@@ -1,6 +1,7 @@
 <body>
     <script>
         const broadcast = new BroadcastChannel('logs-channel');
+
         broadcast.onmessage = event => {
             if (event.data.type !== 'LOGS') return;
             event.data.payload.forEach(log => {
