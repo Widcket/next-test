@@ -24,8 +24,5 @@ module.exports = {
                 inter: ['Inter', ...defaultTheme.fontFamily.sans]
             }
         }
-    },
-    variants: {
-        extend: {}
     }
 };
