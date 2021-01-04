@@ -14,6 +14,8 @@ export default function Route(): React.ReactElement {
     const routePath = route ? `/api/${route.join('/')}` : undefined;
 
     useEffect(() => {
+        let isMounted = true;
+
         if (!routePath) {
             console.error('No route path: router.query has no "route" property');
             return;
@@ -28,13 +30,19 @@ export default function Route(): React.ReactElement {
 
             try {
                 const response = await fetch(routePath);
-                setStatus(response.status);
-                setResponse(await response.json());
+
+                if (isMounted) {
+                    setStatus(response.status);
+                    setResponse(await response.json());
+                }
             } catch (error) {
                 console.error(error);
-                setError(error);
+                if (isMounted) setError(error);
             }
         })();
+        return () => {
+            isMounted = false;
+        };
     }, [routePath, setStatus, setResponse, setError]);
 
     const padding = 'px-8 py-4';
