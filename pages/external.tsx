@@ -17,6 +17,7 @@ export default withPageAuthRequired(function External(): React.ReactElement {
     const [error, setError] = useState<Error>();
 
     useEffect(() => {
+        let isMounted = true;
         if (cat) return;
 
         setStatus(0);
@@ -36,13 +37,19 @@ export default withPageAuthRequired(function External(): React.ReactElement {
                 });
                 const catJson = await catResponse.json();
 
-                setStatus(catResponse.status);
-                setCat(catJson[0]);
+                if (isMounted) {
+                    setStatus(catResponse.status);
+                    setCat(catJson[0]);
+                }
             } catch (error) {
                 console.error(error);
-                setError(error);
+                if (isMounted) setError(error);
             }
         })();
+
+        return () => {
+            isMounted = false;
+        };
     }, [cat, setStatus, setCat, setError]);
 
     return (

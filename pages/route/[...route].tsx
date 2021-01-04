@@ -40,6 +40,7 @@ export default function Route(): React.ReactElement {
                 if (isMounted) setError(error);
             }
         })();
+
         return () => {
             isMounted = false;
         };
