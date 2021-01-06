@@ -47,7 +47,7 @@ export default function Route(): React.ReactElement {
     }, [routePath]);
 
     const padding = 'px-8 py-4';
-    const titleClasses = `${padding} border-b border-background-lighter text-foreground-darkest text-xs font-medium tracking-widest uppercase select-none`;
+    const titleClasses = `${padding} border-b border-background-lighter h2`;
 
     return (
         <div className="flex flex-col h-full">

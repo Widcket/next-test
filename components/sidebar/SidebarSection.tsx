@@ -9,8 +9,7 @@ export default function SidebarSection({ section }: SidebarSectionProps): React.
     const itemClasses = 'p-4 cursor-pointer text-base transition-colors ';
     const activeItemClasses = 'font-medium text-foreground';
     const inactiveItemClasses = 'text-foreground-darker hover:text-foreground';
-    const sectionClasses =
-        'p-4 border-b border-background-lighter text-foreground-darkest text-xs font-medium tracking-widest uppercase';
+    const sectionClasses = 'p-4 border-b border-background-lighter h2';
 
     return (
         <div>

@@ -4,6 +4,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 
+@layer components {
+  .h2 {
+    @apply text-foreground-darkest text-xs font-medium tracking-widest uppercase select-none;
+  }
+}
+
 html {
     background-color: #1d1d26;
 }
