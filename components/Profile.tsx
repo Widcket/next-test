@@ -6,8 +6,8 @@ type ProfileProps = { user?: UserProfile };
 
 export default function Profile({ user }: ProfileProps): React.ReactElement {
     return (
-        <section className="flex flex-grow flex-col items-center justify-center w-2/3 text-center">
-            <div className="flex items-center justify-center overflow-hidden rounded-full">
+        <section className="flex flex-grow flex-col flex-center w-2/3 text-center">
+            <div className="flex flex-center rounded-full overflow-hidden">
                 {user ? (
                     <Image
                         src={user.picture}
@@ -19,7 +19,7 @@ export default function Profile({ user }: ProfileProps): React.ReactElement {
                     />
                 ) : null}
             </div>
-            <div className="flex flex-col items-center text-center justify-center">
+            <div className="flex flex-col flex-center text-center">
                 <h2 className="mt-4 font-medium text-lg text-foreground">{user.name}</h2>
                 <div className="w-12 h-1 mt-2 mb-4 rounded bg-gradient-to-r from-tint-violet to-tint-pink"></div>
                 <p className="text-base">{user.email}</p>

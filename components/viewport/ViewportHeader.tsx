@@ -4,7 +4,7 @@ type ViewportHeaderProps = { title: string };
 
 export default function ViewportHeader({ title }: ViewportHeaderProps): React.ReactElement {
     const classes =
-        'flex flex-col justify-center items-center h-10 select-none bg-gradient-to-r from-tint-violet to-tint-pink font-medium';
+        'flex flex-col flex-center h-10 select-none bg-gradient-to-r from-tint-violet to-tint-pink font-medium';
 
     return (
         <header className={classes}>

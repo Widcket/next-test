@@ -8,6 +8,10 @@
   .h2 {
     @apply text-foreground-darkest text-xs font-medium tracking-widest uppercase select-none;
   }
+
+  .flex-center {
+    @apply items-center justify-center;
+  }
 }
 
 html {

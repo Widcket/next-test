@@ -13,9 +13,5 @@ export default function ViewportStatus({
 }: ViewportStatusProps): React.ReactElement {
     const icon = error || status > 400 ? <Failure /> : loading || !status ? <Loading /> : <Success />;
 
-    return (
-        <aside className="flex justify-center items-center w-1/3 text-center text-background-lighter textured">
-            {icon}
-        </aside>
-    );
+    return <aside className="flex flex-center w-1/3 text-center text-background-lighter textured">{icon}</aside>;
 }

@@ -57,7 +57,7 @@ export default withPageAuthRequired(function External(): React.ReactElement {
             <ViewportHeader title="External API Call (frontend)" />
             <div className="flex flex-grow">
                 <ViewportStatus status={status} error={error} />
-                <section className="flex flex-grow flex-col justify-center items-center w-2/3 text-center">
+                <section className="flex flex-grow flex-col flex-center w-2/3 text-center">
                     {cat ? (
                         <Image src={cat.url} alt="Cute cat GIF" width={cat.width} height={cat.height} priority={true} />
                     ) : null}
