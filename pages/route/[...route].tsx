@@ -44,7 +44,7 @@ export default function Route(): React.ReactElement {
         return () => {
             isMounted = false;
         };
-    }, [routePath, setStatus, setResponse, setError]);
+    }, [routePath]);
 
     const padding = 'px-8 py-4';
     const titleClasses = `${padding} border-b border-background-lighter text-foreground-darkest text-xs font-medium tracking-widest uppercase select-none`;

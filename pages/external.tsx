@@ -50,7 +50,7 @@ export default withPageAuthRequired(function External(): React.ReactElement {
         return () => {
             isMounted = false;
         };
-    }, [cat, setStatus, setCat, setError]);
+    }, [cat]);
 
     return (
         <div className="flex flex-col h-full">
