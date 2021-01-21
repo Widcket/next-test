@@ -9,14 +9,7 @@ export default function Profile({ user }: ProfileProps): React.ReactElement {
         <section className="flex flex-grow flex-col flex-center w-2/3 text-center">
             <div className="flex flex-center rounded-full overflow-hidden">
                 {user ? (
-                    <Image
-                        src={user.picture}
-                        alt="User profile"
-                        width={80}
-                        height={80}
-                        priority={true}
-                        unoptimized={true}
-                    />
+                    <Image src={user.picture} alt="User" width={80} height={80} priority={true} unoptimized={true} />
                 ) : null}
             </div>
             <div className="flex flex-col flex-center text-center">

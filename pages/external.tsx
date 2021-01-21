@@ -11,17 +11,21 @@ type Cat = {
     height: number;
 };
 
+type ExternalState = {
+    cat?: Cat;
+    error: boolean;
+    isLoading: boolean;
+};
+
 export default withPageAuthRequired(function External(): React.ReactElement {
-    const [status, setStatus] = useState<number>(0);
-    const [cat, setCat] = useState<Cat>();
-    const [error, setError] = useState<Error>();
+    const initialState: ExternalState = { cat: undefined, error: false, isLoading: true };
+    const [state, setState] = useState<ExternalState>(initialState);
 
     useEffect(() => {
         let isMounted = true;
-        if (cat) return;
 
-        setStatus(0);
-        setError(undefined);
+        if (state.cat) return;
+        setState({ ...state, error: false, isLoading: true });
 
         (async () => {
             console.info('Fetching thecatapi.com API key from /api/api-key');
@@ -38,25 +42,26 @@ export default withPageAuthRequired(function External(): React.ReactElement {
                 const catJson = await catResponse.json();
 
                 if (isMounted) {
-                    setStatus(catResponse.status);
-                    setCat(catJson[0]);
+                    setState({ cat: catJson[0], error: !catResponse.ok, isLoading: false });
                 }
             } catch (error) {
                 console.error(error);
-                if (isMounted) setError(error);
+                if (isMounted) setState({ ...state, error: !!error, isLoading: false });
             }
         })();
 
         return () => {
             isMounted = false;
         };
-    }, [cat]);
+    }, [state.cat]);
+
+    const { cat, error, isLoading } = state;
 
     return (
         <div className="flex flex-col h-full">
             <ViewportHeader title="External API Call (frontend)" />
             <div className="flex flex-grow">
-                <ViewportStatus status={status} error={error} />
+                <ViewportStatus loading={isLoading} error={error} />
                 <section className="flex flex-grow flex-col flex-center w-2/3 text-center">
                     {cat ? (
                         <Image src={cat.url} alt="Cute cat GIF" width={cat.width} height={cat.height} priority={true} />

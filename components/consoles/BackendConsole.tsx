@@ -30,7 +30,7 @@ export default function BackendConsole(): React.ReactElement {
             <ConsoleHeader title="Backend" />
             <div id={id} className="h-full overflow-y-scroll">
                 <ProvideServiceWorker fileName={'/worker.js'}>
-                    <Console logs={logs} />
+                    <Console logs={logs} variant="dark" />
                 </ProvideServiceWorker>
             </div>
         </section>

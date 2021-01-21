@@ -8,13 +8,13 @@ import Profile from '../components/Profile';
 export default withPageAuthRequired(function CSR(): React.ReactElement {
     console.info('Rendering client-side protected page');
 
-    const { user, loading } = useUser();
+    const { user, isLoading } = useUser();
 
     return (
         <div className="flex flex-col h-full">
             <ViewportHeader title="Profile" />
             <div className="flex flex-grow">
-                <ViewportStatus loading={loading} />
+                <ViewportStatus loading={isLoading} />
                 {user && <Profile user={user} />}
             </div>
         </div>

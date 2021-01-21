@@ -5,10 +5,15 @@ import { JsonView } from 'json-view-for-react';
 import ViewportHeader from '../../components/viewport/ViewportHeader';
 import ViewportStatus from '../../components/viewport/ViewportStatus';
 
+type RouteState = {
+    status: number;
+    response?: any;
+    error: boolean;
+    isLoading: boolean;
+};
+
 export default function Route(): React.ReactElement {
-    const [status, setStatus] = useState<number>(0);
-    const [response, setResponse] = useState<any>({});
-    const [error, setError] = useState<Error>();
+    const [state, setState] = useState<RouteState>({ status: 0, response: undefined, error: false, isLoading: true });
     const router = useRouter();
     const { route } = router.query as { route: string[] };
     const routePath = route ? `/api/${route.join('/')}` : undefined;
@@ -21,9 +26,7 @@ export default function Route(): React.ReactElement {
             return;
         }
 
-        setStatus(0);
-        setResponse({});
-        setError(undefined);
+        setState({ ...state, error: false, isLoading: true });
 
         (async function () {
             console.info(`Fetching ${routePath}`);
@@ -32,12 +35,16 @@ export default function Route(): React.ReactElement {
                 const response = await fetch(routePath);
 
                 if (isMounted) {
-                    setStatus(response.status);
-                    setResponse(await response.json());
+                    setState({
+                        status: response.status,
+                        response: await response.json(),
+                        error: !response.ok,
+                        isLoading: false
+                    });
                 }
             } catch (error) {
                 console.error(error);
-                if (isMounted) setError(error);
+                if (isMounted) setState({ ...state, error: !!error, isLoading: false });
             }
         })();
 
@@ -48,13 +55,14 @@ export default function Route(): React.ReactElement {
 
     const padding = 'px-8 py-4';
     const titleClasses = `${padding} border-b border-background-lighter h2`;
+    const { status, response, error, isLoading } = state;
 
     return (
         <div className="flex flex-col h-full">
             <ViewportHeader title={routePath} />
             <div className="flex flex-grow overflow-hidden">
-                <ViewportStatus status={status} error={error} />
-                {status && response ? (
+                <ViewportStatus loading={isLoading} error={error} />
+                {response ? (
                     <section className="flex flex-grow flex-col items-left justify-start w-2/3 overflow-y-scroll">
                         <div>
                             <h2 className={titleClasses}>Status</h2>

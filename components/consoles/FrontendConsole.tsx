@@ -19,7 +19,7 @@ export default function FrontendConsole(): React.ReactElement {
         <section className="row-span-1 col-span-6 border-t-2 border-l border-background-lighter">
             <ConsoleHeader title="Frontend" />
             <div id={id} className="h-full overflow-y-scroll">
-                <Console logs={logs} />
+                <Console logs={logs} variant="dark" />
             </div>
         </section>
     );

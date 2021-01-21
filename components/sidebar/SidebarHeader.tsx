@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useUser } from '@auth0/nextjs-auth0';
 
 export default function SidebarHeader(): React.ReactElement {
-    const { user, loading } = useUser();
+    const { user, isLoading } = useUser();
 
     const dividerClasses = 'border-l border-background-lighter';
     const classes =
@@ -14,7 +14,7 @@ export default function SidebarHeader(): React.ReactElement {
             <Link href="/">
                 <p className={classes}>Home</p>
             </Link>
-            {loading ? (
+            {isLoading ? (
                 <p className={`${classes} ${dividerClasses}`} />
             ) : (
                 <Link href={`/api/auth/${user ? 'logout' : 'login'}`}>

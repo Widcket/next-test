@@ -4,14 +4,10 @@ import Loading from '../icons/LoadingIcon';
 import Success from '../icons/SuccessIcon';
 import Failure from '../icons/FailureIcon';
 
-type ViewportStatusProps = { status?: number; error?: Error; loading?: boolean };
+type ViewportStatusProps = { error?: boolean; loading?: boolean };
 
-export default function ViewportStatus({
-    status = 200,
-    error = null,
-    loading = false
-}: ViewportStatusProps): React.ReactElement {
-    const icon = error || status > 400 ? <Failure /> : loading || !status ? <Loading /> : <Success />;
+export default function ViewportStatus({ error = false, loading = false }: ViewportStatusProps): React.ReactElement {
+    const icon = loading ? <Loading /> : error ? <Failure /> : <Success />;
 
     return <aside className="flex flex-center w-1/3 text-center text-background-lighter textured">{icon}</aside>;
 }
