@@ -25,7 +25,7 @@ export default withPageAuthRequired(function External(): React.ReactElement {
         let isMounted = true;
 
         if (state.cat) return;
-        setState({ ...state, error: false, isLoading: true });
+        setState(previous => ({ ...previous, error: false, isLoading: true }));
 
         (async () => {
             console.info('Fetching thecatapi.com API key from /api/api-key');
@@ -46,7 +46,7 @@ export default withPageAuthRequired(function External(): React.ReactElement {
                 }
             } catch (error) {
                 console.error(error);
-                if (isMounted) setState({ ...state, error: !!error, isLoading: false });
+                if (isMounted) setState(previous => ({ ...previous, error: !!error, isLoading: false }));
             }
         })();
 

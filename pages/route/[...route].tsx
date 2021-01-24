@@ -26,7 +26,7 @@ export default function Route(): React.ReactElement {
             return;
         }
 
-        setState({ ...state, error: false, isLoading: true });
+        setState(previous => ({ ...previous, error: false, isLoading: true }));
 
         (async function () {
             console.info(`Fetching ${routePath}`);
@@ -44,7 +44,7 @@ export default function Route(): React.ReactElement {
                 }
             } catch (error) {
                 console.error(error);
-                if (isMounted) setState({ ...state, error: !!error, isLoading: false });
+                if (isMounted) setState(previous => ({ ...previous, error: !!error, isLoading: false }));
             }
         })();
 
