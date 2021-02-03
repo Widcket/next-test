@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Loading from '../icons/LoadingIcon';
-import Success from '../icons/SuccessIcon';
-import Failure from '../icons/FailureIcon';
+import Loading from 'components/icons/LoadingIcon';
+import Success from 'components/icons/SuccessIcon';
+import Failure from 'components/icons/FailureIcon';
 
 type ViewportStatusProps = { error?: boolean; loading?: boolean };
 

@@ -2,7 +2,7 @@ require('console.history');
 import { handleAuth, handleLogin, handleLogout, handleCallback, handleProfile } from '@auth0/nextjs-auth0';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import withLogs from '../../../utils/withLogs';
+import withLogs from 'utils/withLogs';
 
 const handleError = (error: any, res: NextApiResponse) => {
     console.error(error);

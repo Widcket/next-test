@@ -4,9 +4,9 @@ import dynamic from 'next/dynamic';
 import { UserProvider } from '@auth0/nextjs-auth0';
 
 import '../styles/globals.css';
-import Layout from '../components/Layout';
-import Sidebar from '../components/sidebar/Sidebar';
-import Viewport from '../components/viewport/Viewport';
+import Layout from 'components/Layout';
+import Sidebar from 'components/sidebar/Sidebar';
+import Viewport from 'components/viewport/Viewport';
 
 const BackendConsole = dynamic(() => import('../components/consoles/BackendConsole'), { ssr: false });
 const FrontendConsole = dynamic(() => import('../components/consoles/FrontendConsole'), { ssr: false });

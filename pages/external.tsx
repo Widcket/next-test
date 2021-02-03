@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 
-import ViewportHeader from '../components/viewport/ViewportHeader';
-import ViewportStatus from '../components/viewport/ViewportStatus';
+import ViewportHeader from 'components/viewport/ViewportHeader';
+import ViewportStatus from 'components/viewport/ViewportStatus';
 
 type Cat = {
     url: string;

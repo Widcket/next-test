@@ -3,10 +3,10 @@ import React from 'react';
 import { NextApiResponse } from 'next';
 import { UserProfile, withPageAuthRequired } from '@auth0/nextjs-auth0';
 
-import ViewportHeader from '../components/viewport/ViewportHeader';
-import ViewportStatus from '../components/viewport/ViewportStatus';
-import Profile from '../components/Profile';
-import withLogs from '../utils/withLogs';
+import ViewportHeader from 'components/viewport/ViewportHeader';
+import ViewportStatus from 'components/viewport/ViewportStatus';
+import Profile from 'components/Profile';
+import withLogs from 'utils/withLogs';
 
 type SSRProps = { user?: UserProfile };
 

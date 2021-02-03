@@ -1,9 +1,9 @@
 import React from 'react';
 import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0';
 
-import ViewportHeader from '../components/viewport/ViewportHeader';
-import ViewportStatus from '../components/viewport/ViewportStatus';
-import Profile from '../components/Profile';
+import ViewportHeader from 'components/viewport/ViewportHeader';
+import ViewportStatus from 'components/viewport/ViewportStatus';
+import Profile from 'components/Profile';
 
 export default withPageAuthRequired(function CSR(): React.ReactElement {
     console.info('Rendering client-side protected page');
