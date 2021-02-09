@@ -1,6 +1,5 @@
 require('console.history');
 import React from 'react';
-import { NextApiResponse } from 'next';
 import { UserProfile, withPageAuthRequired } from '@auth0/nextjs-auth0';
 
 import ViewportHeader from 'components/viewport/ViewportHeader';
