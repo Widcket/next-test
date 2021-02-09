@@ -28,12 +28,14 @@ export default withPageAuthRequired(function CSRF({ csrfToken }): React.ReactEle
                 const target = event.target as typeof event.target & { status: { value: string } };
                 const status = target.status.value;
 
-                await fetch('/api/status', {
+                const response = await fetch('/api/status', {
                     method: 'POST',
                     headers: { 'x-csrf-token': csrfToken },
                     body: JSON.stringify({ status })
                 });
+                const json = await response.json();
 
+                if (!response.ok) throw new Error(json.message);
                 (event.target as HTMLFormElement).reset();
                 await checkSession();
                 setState(previous => ({ ...previous, error: false, isLoading: false }));
