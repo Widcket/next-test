@@ -20,6 +20,8 @@ export default withApiAuthRequired(async (req: NextApiRequest, res: NextApiRespo
             body: { status }
         } = req;
 
+        if ([...status].length > 140) throw new Error('Status has more than 140 characters');
+
         const { user } = getSession(req, res);
         const { accessToken } = await getAccessToken(req, res);
         const endpoint = `${process.env.AUTH0_AUDIENCE}users/${user.sub}`;
