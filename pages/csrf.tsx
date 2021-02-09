@@ -3,7 +3,7 @@ import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0';
 
 import csrf from 'lib/csrf';
 import withLogs from 'lib/withLogs';
-import runMiddleware from 'lib/middleware';
+import runMiddleware from 'lib/runMiddleware';
 import ViewportHeader from 'components/viewport/ViewportHeader';
 import ViewportStatus from 'components/viewport/ViewportStatus';
 

@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { withApiAuthRequired, getSession, getAccessToken } from '@auth0/nextjs-auth0';
 
 import csrf from 'lib/csrf';
-import runMiddleware from 'lib/middleware';
+import runMiddleware from 'lib/runMiddleware';
 import withLogs from 'lib/withLogs';
 
 type Data = {
