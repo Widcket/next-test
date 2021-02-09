@@ -83,7 +83,7 @@ export default withPageAuthRequired(function CSRF({ csrfToken }): React.ReactEle
 
 export const getServerSideProps = withPageAuthRequired({
     async getServerSideProps(context) {
-        console.info('Running getServerSideProps');
+        console.info('Running getServerSideProps from "CSRF" page');
 
         const { req, res } = context;
 
