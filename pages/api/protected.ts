@@ -2,7 +2,7 @@ require('console.history');
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { withApiAuthRequired, getSession } from '@auth0/nextjs-auth0';
 
-import withLogs from 'utils/withLogs';
+import withLogs from 'lib/withLogs';
 
 type Data = {
     profile: string;

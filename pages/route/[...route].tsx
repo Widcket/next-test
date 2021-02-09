@@ -6,14 +6,14 @@ import ViewportHeader from 'components/viewport/ViewportHeader';
 import ViewportStatus from 'components/viewport/ViewportStatus';
 
 type RouteState = {
+    isLoading: boolean;
     status: number;
     response?: any;
     error: boolean;
-    isLoading: boolean;
 };
 
 export default function Route(): React.ReactElement {
-    const [state, setState] = useState<RouteState>({ status: 0, response: undefined, error: false, isLoading: true });
+    const [state, setState] = useState<RouteState>({ isLoading: true, status: 0, response: undefined, error: false });
     const router = useRouter();
     const { route } = router.query as { route: string[] };
     const routePath = route ? `/api/${route.join('/')}` : undefined;
@@ -26,7 +26,7 @@ export default function Route(): React.ReactElement {
             return;
         }
 
-        setState(previous => ({ ...previous, error: false, isLoading: true }));
+        setState(previous => ({ ...previous, isLoading: true, error: false }));
 
         (async function () {
             console.info(`Fetching ${routePath}`);
@@ -36,15 +36,15 @@ export default function Route(): React.ReactElement {
 
                 if (isMounted) {
                     setState({
+                        isLoading: false,
                         status: response.status,
                         response: await response.json(),
-                        error: !response.ok,
-                        isLoading: false
+                        error: !response.ok
                     });
                 }
             } catch (error) {
                 console.error(error);
-                if (isMounted) setState(previous => ({ ...previous, error: !!error, isLoading: false }));
+                if (isMounted) setState(previous => ({ ...previous, isLoading: false, error: !!error }));
             }
         })();
 
@@ -54,8 +54,8 @@ export default function Route(): React.ReactElement {
     }, [routePath]);
 
     const padding = 'px-8 py-4';
-    const titleClasses = `${padding} border-b border-background-lighter h2`;
-    const { status, response, error, isLoading } = state;
+    const titleClasses = `${padding} border-bottom h2`;
+    const { isLoading, status, response, error } = state;
 
     return (
         <div className="flex flex-col h-full">

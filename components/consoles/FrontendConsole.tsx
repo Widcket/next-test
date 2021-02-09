@@ -3,7 +3,7 @@ import { Console, Hook, Unhook } from 'console-feed';
 import { HookedConsole } from 'console-feed/lib/definitions/Console';
 
 import ConsoleHeader from './ConsoleHeader';
-import useScroll from 'utils/useScroll';
+import useScroll from 'lib/useScroll';
 
 export default function FrontendConsole(): React.ReactElement {
     const [logs, setLogs] = useState([]);

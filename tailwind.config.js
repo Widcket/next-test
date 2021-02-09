@@ -24,5 +24,9 @@ module.exports = {
                 inter: ['Inter', ...defaultTheme.fontFamily.sans]
             }
         }
+    },
+    variants: {
+        borderWidth: ['responsive', 'hover', 'focus'],
+        margin: ['responsive', 'hover', 'focus']
     }
 };

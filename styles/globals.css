@@ -12,13 +12,25 @@
   .flex-center {
     @apply items-center justify-center;
   }
+
+  .border-bottom {
+      @apply border-b border-background-lighter;
+  }
+
+  .gradient {
+    @apply bg-gradient-to-r from-tint-violet to-tint-pink;
+  }
 }
 
 html {
     background-color: #1d1d26;
 }
 
-.textured, nav header p:hover, nav ul li:hover, img {
+input, button:focus {
+    outline: none;
+}
+
+.textured, nav header p:hover, nav ul li:hover, img, input:focus {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%2334343c' fill-opacity='1' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
 }
 

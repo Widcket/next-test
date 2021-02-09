@@ -6,10 +6,11 @@ type SidebarSectionProps = { section: { name: string; items: { href: string; tit
 
 export default function SidebarSection({ section }: SidebarSectionProps): React.ReactElement {
     const router = useRouter();
+
     const itemClasses = 'p-4 cursor-pointer text-base transition-colors ';
     const activeItemClasses = 'font-medium text-foreground';
     const inactiveItemClasses = 'text-foreground-darker hover:text-foreground';
-    const sectionClasses = 'p-4 border-b border-background-lighter h2';
+    const sectionClasses = 'p-4 border-bottom h2';
 
     return (
         <div>

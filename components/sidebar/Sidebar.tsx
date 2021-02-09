@@ -7,7 +7,8 @@ export default function Sidebar(): React.ReactElement {
     const pages = [
         { href: '/ssr', title: 'Server-side rendered page' },
         { href: '/csr', title: 'Client-side rendered page' },
-        { href: '/external', title: 'External API call (frontend)' }
+        { href: '/external', title: 'External API call (frontend)' },
+        { href: '/csrf', title: 'CSRF protection' }
     ];
     const routes = [
         { href: '/route/protected', title: 'Protected API route' },

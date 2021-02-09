@@ -2,7 +2,7 @@ require('console.history');
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { withApiAuthRequired } from '@auth0/nextjs-auth0';
 
-import withLogs from 'utils/withLogs';
+import withLogs from 'lib/withLogs';
 
 type Data = {
     cat: string;
@@ -24,6 +24,7 @@ export default withApiAuthRequired(async (_req: NextApiRequest, res: NextApiResp
             .json(json[0]);
     } catch (error) {
         console.error(error);
+
         withLogs(res)
             .status(error.status || 500)
             .json({

@@ -4,7 +4,7 @@ import { HookedConsole } from 'console-feed/lib/definitions/Console';
 import { ProvideServiceWorker } from 'react-hook-use-service-worker';
 
 import ConsoleHeader from './ConsoleHeader';
-import useScroll from 'utils/useScroll';
+import useScroll from 'lib/useScroll';
 
 const iframe = document.createElement('iframe');
 

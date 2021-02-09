@@ -6,7 +6,7 @@ import { UserProfile, withPageAuthRequired } from '@auth0/nextjs-auth0';
 import ViewportHeader from 'components/viewport/ViewportHeader';
 import ViewportStatus from 'components/viewport/ViewportStatus';
 import Profile from 'components/Profile';
-import withLogs from 'utils/withLogs';
+import withLogs from 'lib/withLogs';
 
 type SSRProps = { user?: UserProfile };
 
@@ -25,10 +25,10 @@ export default function SSR({ user }: SSRProps): React.ReactElement {
 }
 
 export const getServerSideProps = withPageAuthRequired({
-    async getServerSideProps(ctx) {
+    async getServerSideProps(context) {
         console.info('Running getServerSideProps');
 
-        withLogs(ctx.res as NextApiResponse);
+        withLogs(context.res);
         return { props: {} };
     }
 });
