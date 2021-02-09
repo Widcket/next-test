@@ -35,7 +35,7 @@ export default withApiAuthRequired(async (req: NextApiRequest, res: NextApiRespo
         });
         const json = await response.json();
 
-        if (!response.ok) throw new Error(json.message);
+        if (!response.ok) throw new Error(json);
         user.user_metadata = json.user_metadata; // This gets persisted by the SDK
 
         withLogs(res).status(200).json({

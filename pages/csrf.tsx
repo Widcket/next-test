@@ -35,7 +35,7 @@ export default withPageAuthRequired(function CSRF({ csrfToken }): React.ReactEle
                 });
                 const json = await response.json();
 
-                if (!response.ok) throw new Error(json.message);
+                if (!response.ok) throw new Error(json);
                 (event.target as HTMLFormElement).reset();
                 await checkSession();
                 setState(previous => ({ ...previous, error: false, isLoading: false }));
