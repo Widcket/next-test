@@ -25,7 +25,7 @@ export default function SSR({ user }: SSRProps): React.ReactElement {
 
 export const getServerSideProps = withPageAuthRequired({
     async getServerSideProps(context) {
-        console.info('Running getServerSideProps from "SSR" page');
+        console.info('Running getServerSideProps for "SSR" page');
 
         withLogs(context.res);
         return { props: {} };

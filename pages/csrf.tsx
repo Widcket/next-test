@@ -30,10 +30,7 @@ export default withPageAuthRequired(function CSRF({ csrfToken }): React.ReactEle
 
                 const response = await fetch('/api/status', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'x-csrf-token': csrfToken
-                    },
+                    headers: { 'Content-Type': 'application/json', 'x-csrf-token': csrfToken },
                     body: JSON.stringify({ status })
                 });
                 const json = await response.json();
@@ -86,7 +83,7 @@ export default withPageAuthRequired(function CSRF({ csrfToken }): React.ReactEle
 
 export const getServerSideProps = withPageAuthRequired({
     async getServerSideProps(context) {
-        console.info('Running getServerSideProps from "CSRF" page');
+        console.info('Running getServerSideProps for "CSRF" page');
 
         const { req, res } = context;
 
