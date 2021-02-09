@@ -29,10 +29,7 @@ export default withPageAuthRequired(function CSRF({ csrfToken }): React.ReactEle
 
                 await fetch('/api/status', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'x-csrf-token': csrfToken
-                    },
+                    headers: { 'x-csrf-token': csrfToken },
                     body: JSON.stringify({ status })
                 });
 
