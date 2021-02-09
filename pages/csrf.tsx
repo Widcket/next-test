@@ -1,3 +1,4 @@
+require('console.history');
 import React, { FormEvent, useState, useCallback } from 'react';
 import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0';
 
