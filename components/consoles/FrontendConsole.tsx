@@ -11,7 +11,7 @@ export default function FrontendConsole(): React.ReactElement {
 
     useEffect(() => {
         Hook(window.console, log => setLogs(logs => [...logs, log]), false);
-        return () => Unhook(window.console as HookedConsole);
+        () => Unhook(window.console as HookedConsole);
     }, []);
     useScroll(id);
 

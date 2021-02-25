@@ -21,7 +21,7 @@ export default function BackendConsole(): React.ReactElement {
 
     useEffect(() => {
         Hook((iframe.contentWindow as any).console, log => setLogs(logs => [...logs, log]), false);
-        return () => Unhook((iframe.contentWindow as any).console as HookedConsole);
+        () => Unhook((iframe.contentWindow as any).console as HookedConsole);
     }, []);
     useScroll(id);
 
