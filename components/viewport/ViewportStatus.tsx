@@ -4,7 +4,11 @@ import Loading from 'components/icons/LoadingIcon';
 import Success from 'components/icons/SuccessIcon';
 import Failure from 'components/icons/FailureIcon';
 
-type ViewportStatusProps = { empty?: boolean; loading?: boolean; error?: boolean };
+type ViewportStatusProps = {
+    empty?: boolean;
+    loading?: boolean;
+    error?: boolean;
+};
 
 export default function ViewportStatus({
     empty = false,

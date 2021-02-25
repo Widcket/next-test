@@ -2,7 +2,15 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-type SidebarSectionProps = { section: { name: string; items: { href: string; title: string }[] } };
+type SidebarSectionProps = {
+    section: {
+        name: string;
+        items: {
+            href: string;
+            title: string;
+        }[];
+    };
+};
 
 export default function SidebarSection({ section }: SidebarSectionProps): React.ReactElement {
     const router = useRouter();

@@ -2,7 +2,13 @@ import React from 'react';
 import Image from 'next/image';
 import { UserProfile } from '@auth0/nextjs-auth0';
 
-type ProfileProps = { user?: UserProfile & { user_metadata?: { status: string } } };
+type ProfileProps = {
+    user?: UserProfile & {
+        user_metadata?: {
+            status: string;
+        };
+    };
+};
 
 export default function Profile({ user }: ProfileProps): React.ReactElement {
     const status = user?.user_metadata?.status;

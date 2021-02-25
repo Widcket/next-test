@@ -16,8 +16,8 @@ iframe.style.display = 'none';
 document.body.appendChild(iframe);
 
 export default function BackendConsole(): React.ReactElement {
-    const id = 'backend-console';
     const [logs, setLogs] = useState([]);
+    const id = 'backend-console';
 
     useEffect(() => {
         Hook((iframe.contentWindow as any).console, log => setLogs(logs => [...logs, log]), false);
