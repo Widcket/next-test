@@ -32,7 +32,7 @@ export default withApiAuthRequired(async (req: NextApiRequest, res: NextApiRespo
         const response = await fetch(endpoint, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
-            body: JSON.stringify({ user_metadata: { status: status } })
+            body: JSON.stringify({ user_metadata: { status } })
         });
         const json = await response.json();
 
