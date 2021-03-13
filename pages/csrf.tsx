@@ -50,7 +50,8 @@ export default withPageAuthRequired(function CSRF({ csrfToken }): React.ReactEle
 
     const { isSubmitted, isLoading, error } = state;
     const inputClasses =
-        'py-4 bg-background border-bottom text-foreground-darker placeholder-foreground-darkest hover:border-b-2 focus:border-b-2 hover:-mb-px focus:-mb-px';
+        'py-4 bg-background border-bottom text-foreground-darker placeholder-foreground-darkest hover:border-b-2' +
+        ' focus:border-b-2 hover:-mb-px focus:-mb-px';
 
     return (
         <div className="flex flex-col h-full">
