@@ -9,20 +9,20 @@ import ViewportHeader from 'components/viewport/ViewportHeader';
 import ViewportStatus from 'components/viewport/ViewportStatus';
 
 type CSRFState = {
-    wasSubmitted: boolean;
+    isSubmitted: boolean;
     isLoading: boolean;
     error: boolean;
 };
 
 export default withPageAuthRequired(function CSRF({ csrfToken }): React.ReactElement {
-    const initialState: CSRFState = { error: false, isLoading: false, wasSubmitted: false };
+    const initialState: CSRFState = { error: false, isLoading: false, isSubmitted: false };
     const [state, setState] = useState<CSRFState>(initialState);
     const { checkSession } = useUser();
 
     const submit = useCallback(() => {
         return async (event: FormEvent<HTMLFormElement>) => {
             event.preventDefault();
-            setState(previous => ({ ...previous, error: false, isLoading: true, wasSubmitted: true }));
+            setState(previous => ({ ...previous, error: false, isLoading: true, isSubmitted: true }));
 
             try {
                 const target = event.target as typeof event.target & { status: { value: string } };
@@ -48,7 +48,7 @@ export default withPageAuthRequired(function CSRF({ csrfToken }): React.ReactEle
         };
     }, [csrfToken]);
 
-    const { wasSubmitted, isLoading, error } = state;
+    const { isSubmitted, isLoading, error } = state;
     const inputClasses =
         'py-4 bg-background border-bottom text-foreground-darker placeholder-foreground-darkest hover:border-b-2 focus:border-b-2 hover:-mb-px focus:-mb-px';
 
@@ -56,7 +56,7 @@ export default withPageAuthRequired(function CSRF({ csrfToken }): React.ReactEle
         <div className="flex flex-col h-full">
             <ViewportHeader title="CSRF Protection" />
             <div className="flex flex-grow">
-                <ViewportStatus empty={!wasSubmitted} loading={isLoading} error={error} />
+                <ViewportStatus empty={!isSubmitted} loading={isLoading} error={error} />
                 <form onSubmit={submit()} className="flex flex-center flex-grow">
                     <div className="flex flex-col justify-between w-3/4 h-32">
                         <input
