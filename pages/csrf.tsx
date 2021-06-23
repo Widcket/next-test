@@ -1,6 +1,6 @@
 require('console.history');
 import React, { FormEvent, useState, useCallback } from 'react';
-import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0';
+import { useUser, withPageAuthRequired, WithPageAuthRequiredProps } from '@auth0/nextjs-auth0';
 
 import csrf from 'lib/csrf';
 import withLogs from 'lib/withLogs';
@@ -8,13 +8,15 @@ import runMiddleware from 'lib/runMiddleware';
 import ViewportHeader from 'components/viewport/ViewportHeader';
 import ViewportStatus from 'components/viewport/ViewportStatus';
 
+type CSRFProps = { csrfToken: string } & WithPageAuthRequiredProps;
+
 type CSRFState = {
     isSubmitted: boolean;
     isLoading: boolean;
     error: boolean;
 };
 
-export default withPageAuthRequired(function CSRF({ csrfToken }): React.ReactElement {
+export default withPageAuthRequired(function CSRF({ csrfToken }: CSRFProps): React.ReactElement {
     const initialState: CSRFState = { error: false, isLoading: false, isSubmitted: false };
     const [state, setState] = useState<CSRFState>(initialState);
     const { checkSession } = useUser();
