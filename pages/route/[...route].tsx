@@ -22,7 +22,6 @@ export default function Route(): React.ReactElement {
         let isMounted = true;
 
         if (!routePath) {
-            console.error('No route path: router.query has no "route" property');
             return;
         }
 
