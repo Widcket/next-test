@@ -13,9 +13,10 @@ const handleError = (error: any, res: NextApiResponse) => {
 
 const login = async (req: NextApiRequest, res: NextApiResponse) => {
     console.info('Running handleLogin');
+    const { login_hint: loginHint } = req.query as { login_hint: string };
 
     try {
-        await handleLogin(req, withLogs(res));
+        await handleLogin(req, withLogs(res), { authorizationParams: { login_hint: loginHint } });
     } catch (error) {
         handleError(error, res);
     }
